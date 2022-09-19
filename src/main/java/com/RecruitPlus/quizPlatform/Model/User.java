@@ -9,10 +9,6 @@ import java.util.List;
 
 @Document(collection = "user")
 @Data
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class User {
     @Id
     private String user_id;
