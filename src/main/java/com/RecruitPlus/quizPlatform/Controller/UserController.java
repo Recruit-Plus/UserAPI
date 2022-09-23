@@ -21,6 +21,10 @@ public class UserController {
 
         return userService.allUsers();
     }
+    @GetMapping("/user/{role}")
+    public List<User> getUserByRole(@PathVariable(value = "role") String role){
+        return userService.getUserByRole(role);
+    }
 
     @GetMapping("/email")
     public List<User> getUserByEmail(@RequestParam(required =true) String email){
