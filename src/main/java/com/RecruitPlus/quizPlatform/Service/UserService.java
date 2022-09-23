@@ -22,10 +22,21 @@ public class UserService {
     @Autowired
     MongoTemplate mongoTemplate;
 
+    //Get all users
     public List<User> allUsers(){
+
         return userRepository.findAll();
     }
 
+    public Optional<User> getUserById(String user_id){
+        return userRepository.findById(user_id);
+    }
+
+    public List<User> getUserByRole(String role) {
+        return userRepository.findByRole(role);
+    }
+
+    // Get User of specific Email
     public List<User> getUserByEmail(String email){
         Query query = new Query();
         List<Criteria> criteria = new ArrayList<>();
@@ -43,6 +54,7 @@ public class UserService {
 
     }
 
+    //update user
     public void updateRole(String userId,User user)
     {
         User findById= userRepository.findById(userId)
@@ -51,12 +63,12 @@ public class UserService {
         findById.setRole(user.getRole());
         userRepository.save(findById);
     }
+
+    //Save user
     public User saveUser(User user)
     {
+
         return userRepository.save(user);
     }
 
-    public List<User> getUserByRole(String role) {
-        return userRepository.findByRole(role);
-    }
 }
